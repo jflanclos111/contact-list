@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.scss";
+import { IdCard } from "./components/id-card/id-card.component";
+import { CONTACTS } from "./data/contacts";
 
-function App() {
+export function App() {
+  const [state, setState] = useState(CONTACTS);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="contacts">
+      {state.map((contact) => {
+        return (
+          <IdCard
+            key={contact.id}
+            name={contact.name}
+            homePhone={contact.homePhone}
+            mobilePhone={contact.homePhone}
+            workPhone={contact.workPhone}
+            email={contact.email}
+            avatarUrl={contact.avatarURL}
+          />
+        );
+      })}
     </div>
   );
 }
-
-export default App;

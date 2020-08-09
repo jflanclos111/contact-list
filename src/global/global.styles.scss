@@ -1,0 +1,48 @@
+$primary-background-color: #037256;
+$secondary-background-color: #00221f;
+$primary-text-color: #afa8a8;
+$secondary-text-color: #ffffff;
+
+$primary-small-font-size: 0.9rem;
+$primary-large-font-size: 1.5rem;
+$text-zoom-factor: 0.05;
+$primary-font-family: "Baloo Da 2";
+
+$text-animation-duration: 500ms;
+
+@mixin noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                      supported by Chrome, Opera and Firefox */
+}
+
+@mixin small-text-styling {
+  @include noselect;
+  font-size: $primary-small-font-size;
+  font-family: $primary-font-family;
+  color: $primary-text-color;
+  transition: all $text-animation-duration ease;
+  &:hover {
+    color: $secondary-text-color;
+    font-size: $primary-small-font-size * (1 + $text-zoom-factor);
+    transition: all $text-animation-duration ease;
+  }
+}
+
+@mixin large-text-styling {
+  @include noselect;
+  font-size: $primary-large-font-size;
+  font-family: $primary-font-family;
+  color: $primary-text-color;
+  transition: all $text-animation-duration ease;
+
+  &:hover {
+    color: $secondary-text-color;
+    font-size: $primary-large-font-size * (1 + $text-zoom-factor);
+    transition: all $text-animation-duration ease;
+  }
+}

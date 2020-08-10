@@ -1,26 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.scss";
-import { IdCard } from "./components/id-card/id-card.component";
 import { CONTACTS } from "./data/contacts";
+import { SearchBar } from "./components/search-bar/search-bar.component";
+import { IdCardContainer } from "./components/id-card-container/id-card-container";
 
 export function App() {
-  const [state, setState] = useState(CONTACTS);
+  const [search, setSearch] = useState({ searchField: "" });
+  const [contacts, setContacts] = useState(CONTACTS);
+
+  function handleSearch(event) {
+    const { value } = event.target;
+    setSearch((prevSearch) => {
+      return { ...prevSearch, searchField: value };
+    });
+  }
+
+  function filterSearch(rawArray, searchText) {
+    let filteredContacts = rawArray.filter((contact) => contact.name.toLowerCase().includes(searchText.toLowerCase()));
+    let sortedContacts = filteredContacts.sort((a, b) => {
+      if (a.name >= b.name) {
+        return 1;
+      } else {
+        return -1;
+      }
+    });
+    return sortedContacts;
+  }
+
+  useEffect(() => {
+    let newContacts = filterSearch(CONTACTS, search.searchField);
+    setContacts(() => {
+      return newContacts;
+    });
+  }, [search]);
 
   return (
-    <div className="contacts">
-      {state.map((contact) => {
-        return (
-          <IdCard
-            key={contact.id}
-            name={contact.name}
-            homePhone={contact.homePhone}
-            mobilePhone={contact.homePhone}
-            workPhone={contact.workPhone}
-            email={contact.email}
-            avatarUrl={contact.avatarURL}
-          />
-        );
-      })}
+    <div className="page">
+      <div className="search">
+        <SearchBar searchText={search.searchField} handleSearch={handleSearch} />
+      </div>
+      <div className="contacts">
+        <IdCardContainer contactList={contacts} />
+      </div>
     </div>
   );
 }

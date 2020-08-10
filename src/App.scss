@@ -1,8 +1,20 @@
-.contacts {
+@import "../src/global/global.styles.scss";
+
+.search {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  transition: all;
+}
+
+.contacts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-wrapper {
+  display: grid;
+  grid-template-areas:
+    "search"
+    "contacts";
 }

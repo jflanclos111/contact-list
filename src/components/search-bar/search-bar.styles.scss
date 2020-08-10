@@ -1,0 +1,30 @@
+@import "../../global/global.styles.scss";
+
+.search-container {
+  height: 40px;
+  width: 40%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background-color: yellow;
+  overflow: hidden;
+  border-radius: 0.3rem;
+  .search-bar {
+    height: 100%;
+    width: 100%;
+    input {
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      border: none;
+      outline: none;
+      background-color: white;
+      font-family: $primary-font-family;
+      font-size: 1.2rem;
+      color: $primary-background-color;
+    }
+    input:focus {
+      border: none;
+      outline: none;
+    }
+  }
+}

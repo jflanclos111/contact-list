@@ -16,8 +16,10 @@ export function App() {
   }
 
   function filterSearch(rawArray, searchText) {
-    let filteredContacts = rawArray.filter((contact) => contact.name.toLowerCase().includes(searchText.toLowerCase()));
-    let sortedContacts = filteredContacts.sort((a, b) => {
+    const filteredContacts = rawArray.filter((contact) =>
+      contact.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+    const sortedContacts = filteredContacts.sort((a, b) => {
       if (a.name >= b.name) {
         return 1;
       } else {
@@ -28,7 +30,7 @@ export function App() {
   }
 
   useEffect(() => {
-    let newContacts = filterSearch(CONTACTS, search.searchField);
+    const newContacts = filterSearch(CONTACTS, search.searchField);
     setContacts(() => {
       return newContacts;
     });

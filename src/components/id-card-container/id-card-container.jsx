@@ -17,8 +17,7 @@ export function IdCardContainer({ contactList }) {
   ];
 
   function randomResponse(responseArr) {
-    let response = responseArr[Math.floor(Math.random() * responseArr.length)];
-    console.log(response);
+    const response = responseArr[Math.floor(Math.random() * responseArr.length)];
     return response;
   }
 
